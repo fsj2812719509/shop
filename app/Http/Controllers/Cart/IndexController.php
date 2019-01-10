@@ -93,7 +93,7 @@ class IndexController extends Controller{
         $cid = CartModel::insertGetId($data);
         if(!$cid){
             $response = [
-                'errno' => 5002,
+                'error' => 5002,
                 'msg'   => '添加购物车失败，请重试'
             ];
             return $response;
@@ -105,8 +105,6 @@ class IndexController extends Controller{
             'msg'   => '添加成功'
         ];
         return $response;
-
-
 
 
     }

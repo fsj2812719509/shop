@@ -75,6 +75,9 @@ Route::get('/order','Order\IndexController@order')->middleware('check.login.toke
 //订单展示
 Route::get('/orderlist','Order\IndexController@orderlist');
 
+//支付
+Route::get('/pay/{order_id}','Pay\IndexController@pay')->middleware('check.login.token');
+
 
 
 

@@ -15,14 +15,14 @@ use App\Model\GoodsModel;
 class IndexController extends Controller{
     /** 生成订单 */
     public function order(){
-
         //获取uid
         $uid = session()->get('uid');
-
         //查询购物车列表
         $res = CartModel::where(['uid'=>$uid])->get()->toArray();
+
         if(empty($res)){
             echo '购物车里还没有商品哦，不能结算';
+            exit;
         }
         $order_price = 0;
         if($res){

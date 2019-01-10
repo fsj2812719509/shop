@@ -13,16 +13,14 @@ $("#add_cart_btn").click(function (e) {
         dataType:   'json',
         success: function (res) {
 
-          /*  //console.log(res);
-           /!* if(res.error==301){
+          //console.log(res);
+            if(res.error==301){
                 window.location.href=res.url;
-            }else*!/ //if(res.error==0){
-
+            }else if(res.error==0){
                 alert(res.msg);
-                if(res.error==0){
                     window.location.href='/cart';
-                }
-           // }*/
+
+            }
         }
     })
 })
