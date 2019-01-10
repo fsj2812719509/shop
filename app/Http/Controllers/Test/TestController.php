@@ -83,4 +83,8 @@ class TestController extends Controller
 
         return view('test.child',$data);
     }
+
+    public function checkCookie(){
+        echo __METHOD__;
+    }
 }

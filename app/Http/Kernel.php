@@ -2,7 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckLoginToken;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+use App\Http\Middleware\CheckCookie;
 
 class Kernel extends HttpKernel
 {
@@ -57,5 +60,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'check.cookie'=>CheckCookie::class,
+        'check.login.token'=>CheckLoginToken::class,
     ];
 }
