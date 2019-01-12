@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\GoodsModel;
 class IndexController extends Controller{
+    public function ce(){
+        $url='http://zty.52self.cn/';
+        $client=new Client(['base_uri'=>$url,'timeout'=>2.0,]);
+        $response=$client->request('GET','/Order.php');
+        echo $response->getBody();
+    }
+
+
+
+
 
     /** 支付 */
     public function pay($order_id){
