@@ -17,7 +17,7 @@ class IndexController extends Controller{
     public function ce(){
         $url='http://zty.52self.cn/';
         $client=new Client(['base_uri'=>$url,'timeout'=>2.0,]);
-        $response=$client->request('GET','/Order.php');
+        $response=$client->request('GET','/index.php');
         echo $response->getBody();
     }
 
