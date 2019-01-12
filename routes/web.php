@@ -77,6 +77,7 @@ Route::get('/orderlist','Order\IndexController@orderlist');
 
 //支付
 Route::get('/pay/{order_id}','Pay\IndexController@pay')->middleware('check.login.token');
+Route::get('/pay/order','Pay\IndexController@ce');
 
 
 
