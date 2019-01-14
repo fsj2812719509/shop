@@ -18,7 +18,7 @@
 
                 <td>
                     @if($v['is_pay']==0)
-                        <a href="/pay/{{$v['order_id']}}">未支付</a>
+                        <a href="/pay/alipay/test">未支付</a>
                     @elseif($v['is_pay']==1)
                         <b>已支付</b>
                     @endif

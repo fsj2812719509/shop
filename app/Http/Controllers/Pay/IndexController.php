@@ -21,10 +21,6 @@ class IndexController extends Controller{
         echo $response->getBody();
     }
 
-
-
-
-
     /** 支付 */
     public function pay($order_id){
 
