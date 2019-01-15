@@ -71,9 +71,9 @@ Route::get('/goodsdetail/{goods_id}','Goods\IndexController@goodsDetail');
 Route::get('/cartdel2/{goods_id}','Cart\IndexController@cartdel2')->middleware('check.login.token');
 
 //生成订单
-Route::get('/order','order\IndexController@order')->middleware('check.login.token');
+Route::get('/order','Order\IndexController@order')->middleware('check.login.token');
 //订单展示
-Route::get('/orderlist','order\IndexController@orderlist');
+Route::get('/orderlist','Order\IndexController@orderlist');
 
 //支付
 Route::get('/pay/{order_id}','Pay\IndexController@pay')->middleware('check.login.token');
