@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pay;
 
 use App\Model\OrderModel;
+use App\Model\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
