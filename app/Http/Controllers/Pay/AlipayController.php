@@ -11,7 +11,7 @@ class AlipayController extends Controller{
     public $app_id ='2016092300576201';
     public $gate_way = 'https://openapi.alipaydev.com/gateway.do';
     public $notify_url = 'http://fushijia.comcto.com/pay/alipay/notify';
-    public $return_url = 'http://shop.com/pay/alipay/return';
+    public $return_url = 'http://fushijia.comcto.com/pay/alipay/return';
     public $rsaPrivateKeyFilePath = './key/priv.key';
     public $aliPubKey = './key/ali_pub.key';
 
@@ -219,15 +219,15 @@ class AlipayController extends Controller{
                 'is_pay'        => 1,       //支付状态  0未支付 1已支付
                 'pay_amount'    => $_POST['total_amount'] * 100,    //支付金额
                 'pay_time'      => strtotime($_POST['gmt_payment']), //支付时间
-                'plat_oid'      => $_POST['trade_no'],      //支付宝订单号
-                'plat'          => 1,      //平台编号 1支付宝 2微信
+                /*'plat_oid'      => $_POST['trade_no'],      //支付宝订单号
+                'plat'          => 1,      //平台编号 1支付宝 2微信*/
             ];
 
             OrderModel::where(['oid'=>$oid])->update($info);
         }
 
         //处理订单逻辑
-        $this->dealOrder($_POST);
+       // $this->dealOrder($_POST);
 
         echo 'success';
     }
@@ -265,10 +265,26 @@ class AlipayController extends Controller{
     public function dealOrder($data)
     {
 
+        $updata=[
+            'pay_time'=>time(),
+            'pay_amount'=>$data['total_amount'],
+            'is_pay'=>1
+        ];
+        OrderModel::where(['order_id'=>$data['out_trade_no']])->update($updata);
 
-        //加积分
-        echo '支付成功了';
 
-        //减库存
+//增加消费积分 ...
+
+        $integral=$data['total_amount']/100;
+        $uid = session()->get('uid');
+        $where = [
+            'uid'=>$uid
+        ];
+        $data1 = UserModel::where($where)->update(['score'=>$integral]);
+
+
+        header('Refresh:2;url=/orderlist');
+        echo '支付成功，正在跳转';
+
     }
 }
