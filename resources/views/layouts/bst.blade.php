@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -6,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{csrf_token()}}">
 
+    <title>BootStrap</title>
 
     <link rel="stylesheet" href="{{URL::asset('/bootstrap/css/bootstrap.min.css')}}">
 </head>
 <body>
 
 <div class="container">
+    <!-- Static navbar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -42,7 +43,8 @@
                             <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
-                    <li><a href="/userlogin">登录</a></li>
+                    <li><a href="/cart">购物车</a></li>
+                    <li><a href="/user/login">登录</a></li>
                     <li><a href="/user/logou">退出</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
