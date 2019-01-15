@@ -285,7 +285,7 @@ class AlipayController extends Controller{
 
 
         header('Refresh:2;url=/orderlist');
-        echo '支付成功，正在跳转';
+        echo '支付成功，正在跳转1';
 
     }
 }
