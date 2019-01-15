@@ -81,8 +81,8 @@ Route::get('/ce','Pay\IndexController@ce');
 //支付
 Route::get('/pay/alipay/test','Pay\AlipayController@test');//测试
 Route::get('/pay/o/{order_id}','Pay\AlipayController@orderpay')->middleware('check.login.token');         //订单支付
-Route::post('/pay/alipay/notify','Pay\AlipayController@notify');        //支付宝支付 异步回调
-Route::get('/pay/alipay/return','Pay\AlipayController@alireturn');        //支付宝支付 异步回调
+Route::post('/pay/alipay/notify','Pay\AlipayController@aliNotify'); //异步通知
+Route::get('/pay/alipay/return','Pay\AlipayController@alireturn'); //支付宝支付 同步回调
 
 
 
