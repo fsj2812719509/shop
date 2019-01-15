@@ -65,6 +65,6 @@ class IndexController extends Controller{
             'list'      => $list
         ];
 
-        return view('Order.orderlist',$data);
+        return view('order.orderlist',$data);
     }
 }
