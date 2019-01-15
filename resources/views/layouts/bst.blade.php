@@ -7,7 +7,8 @@
 
     <title>BootStrap</title>
 
-    <link rel="stylesheet" href="{{URL::asset('/bootstrap/css/bootstrap.min.css')}}">
+   {{-- <link rel="stylesheet" href="{{URL::asset('/bootstrap/css/bootstrap.min.css')}}">--}}
+    <link rel="stylesheet" href="http://zty.tactshan.com/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
 
@@ -55,8 +56,12 @@
 
 @section('footer')
 
-    <script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>
-    <script src="{{URL::asset('/bootstrap/js/bootstrap.min.js')}}"></script>
+   {{-- <script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>--}}
+    <script src="http://zty.tactshan.com/js/jquery-3.2.1.min.js"/>
+
+    {{--<script src="{{URL::asset('/bootstrap/js/bootstrap.min.js')}}"></script>--}}
+   <script src="http://zty.tactshan.com/bootstrap/js/bootstrap.min.js"/>
+
 @show
 </body>
 </html>
