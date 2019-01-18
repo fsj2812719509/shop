@@ -89,3 +89,7 @@ Route::get('/pay/alipay/return','Pay\AlipayController@alireturn'); //支付宝�
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
