@@ -84,12 +84,14 @@ Route::get('/pay/o/{order_id}','Pay\AlipayController@orderpay')->middleware('che
 Route::post('/pay/alipay/notify','Pay\AlipayController@aliNotify'); //异步通知
 Route::get('/pay/alipay/return','Pay\AlipayController@alireturn'); //支付宝支付 同步回调
 
-
-
-
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//文件上传
+Route::get('/upload','Upload\UploadController@upload');
+Route::post('/uploads','Upload\UploadController@uploads');
+
+//考试登录
+Route::get('/login1','Login\LoginController@login');
+Route::post('/dologin1','Login\loginController@dologin');
+
