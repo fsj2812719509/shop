@@ -10,7 +10,8 @@
             <input type="text" name="name" id="inputName" class="form-control" required autofocus>
 
             <label for="inputPassword" >密码</label>
-            <input type="password" name="pwd" id="inputPassword" class="form-control" required>
+            <input type="password" name="pwd" id="inputPassword" class="form-control"  required>
+            <a href="/pwd">修改密码</a>
             <p></p>
             <div style="width: 100px">
                 <button class="btn btn-info" type="submit">登录</button>

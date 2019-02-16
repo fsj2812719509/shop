@@ -94,4 +94,18 @@ Route::post('/uploads','Upload\UploadController@uploads');
 //考试登录
 Route::get('/login1','Login\LoginController@login');
 Route::post('/dologin1','Login\loginController@dologin');
+Route::get('/pwd','Login\LoginController@update');
+Route::post('/update/pwd','Login\LoginController@doupdate');
+
+//微信
+Route::get('/Wechat/test','Wechat\WechatController@test');
+Route::get('/Wechat/valid','Wechat\WechatController@validToken');
+Route::get('/Wechat/valid1','Wechat\WechatController@validToken1');
+Route::post('/Wechat/valid1','Wechat\WechatController@wxEvent');        //接收微信服务器事件推送
+Route::post('/Wechat/valid','Wechat\WechatController@validToken');
+
+
+
+
+
 

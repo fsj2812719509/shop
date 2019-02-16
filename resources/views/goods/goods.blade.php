@@ -1,6 +1,6 @@
 @extends('layouts.bst')
 
-@section('content')
+@section('content')；
     <p>这里是goods Content.
     <table class="table table-bordered">
         <thead>
