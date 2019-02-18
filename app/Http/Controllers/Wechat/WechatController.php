@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Weixin;
 
+use App\Model\WechatModel;
+use App\Model\WeixinUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -37,6 +39,45 @@ class WeixinController extends Controller
     public function wxEvent()
     {
         $data = file_get_contents("php://input");
+
+        //解析xml
+        $xml = simplexml_load_string($data);
+
+        $event = $xml->Event;
+
+        if($event=='subscribe'){
+            $openid = $xml -> FormUserName;
+            $sub_time = $xml -> CreateTime;
+
+            echo 'openid'.$openid;echo'<br>';
+            echo '$sub_time: ' . $sub_time;
+
+            //获取用户信息
+            $user_info = $this->getUserInfo($openid);
+            echo '<pre>';print_r($user_info);echo '</pre>';
+
+            //保存用户信息
+            $u = WechatModel::where(['openid'=>$openid])->first();
+            if($u){
+                echo '用户已存在';
+            }else{
+                $user_data = [
+                    'openid'            => $openid,
+                    'add_time'          => time(),
+                    'nickname'          => $user_info['nickname'],
+                    'sex'               => $user_info['sex'],
+                    'headimgurl'        => $user_info['headimgurl'],
+                    'subscribe_time'    => $sub_time,
+                ];
+
+                $id = WechatModel::insertGetId($user_data);
+                var_dump($id);
+
+            }
+
+        }
+
+
         $log_str = date('Y-m-d H:i:s') . "\n" . $data . "\n<<<<<<<";
         file_put_contents('logs/wx_event.log',$log_str,FILE_APPEND);
     }
@@ -58,7 +99,7 @@ class WeixinController extends Controller
         file_put_contents('logs/wx_event.log',$log_str,FILE_APPEND);
     }
 
-    /**
+    /**`
      * 获取微信AccessToken
      */
     public function getWXAccessToken()
@@ -85,11 +126,12 @@ class WeixinController extends Controller
      */
     public function getUserInfo($openid)
     {
-        $openid = 'oLreB1jAnJFzV_8AGWUZlfuaoQto';
+        //$openid = 'oLreB1jAnJFzV_8AGWUZlfuaoQto';
         $access_token = $this->getWXAccessToken();
         $url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
 
         $data = json_decode(file_get_contents($url),true);
-        echo '<pre>';print_r($data);echo '</pre>';
+        //echo '<pre>';print_r($data);echo '</pre>';
+        return $data;
     }
 }
