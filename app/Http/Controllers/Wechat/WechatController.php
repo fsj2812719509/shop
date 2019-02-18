@@ -38,6 +38,7 @@ class WechatController extends Controller
     public function wxEvent()
     {
         $data = file_get_contents("php://input");
+        var_dump($data);
 
         //解析xml
         $xml = simplexml_load_string($data);
