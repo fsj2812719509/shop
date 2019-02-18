@@ -112,6 +112,8 @@ class WechatController extends Controller
 
             //记录缓存
             $token = $data['access_token'];
+            var_dump($token);exit;
+
             Redis::set($this->redis_weixin_access_token,$token);
             Redis::setTimeout($this->redis_weixin_access_token,3600);
         }
