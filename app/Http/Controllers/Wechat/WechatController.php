@@ -39,42 +39,42 @@ class WechatController extends Controller
     {
         $data = file_get_contents("php://input");
 
-//        //解析xml
-//        $xml = simplexml_load_string($data);
+        //解析xml
+        $xml = simplexml_load_string($data);
+
+        $event = $xml->Event;
 //
-//        $event = $xml->Event;
-////
-//        if($event=='subscribe'){
-//            $openid = $xml -> FormUserName;
-//            $sub_time = $xml -> CreateTime;
-//
-//            echo 'openid'.$openid;echo'<br>';
-//            echo '$sub_time: ' . $sub_time;
-//
-//            //获取用户信息
-//            $user_info = $this->getUserInfo($openid);
-//            echo '<pre>';print_r($user_info);echo '</pre>';
-//
-//            //保存用户信息
-//            $u = WechatModel::where(['openid'=>$openid])->first();
-//            if($u){
-//                echo '用户已存在';
-//            }else{
-//                $user_data = [
-//                    'openid'            => $openid,
-//                    'add_time'          => time(),
-//                    'nickname'          => $user_info['nickname'],
-//                    'sex'               => $user_info['sex'],
-//                    'headimgurl'        => $user_info['headimgurl'],
-//                    'subscribe_time'    => $sub_time,
-//                ];
-//
-//                $id = WechatModel::insertGetId($user_data);
-//                var_dump($id);
-//
-//            }
-//
-//        }
+        if($event=='subscribe'){
+            $openid = $xml -> FormUserName;
+            $sub_time = $xml -> CreateTime;
+
+            echo 'openid'.$openid;echo'<br>';
+            echo '$sub_time: ' . $sub_time;
+
+            //获取用户信息
+            $user_info = $this->getUserInfo($openid);
+            echo '<pre>';print_r($user_info);echo '</pre>';
+
+            //保存用户信息
+            $u = WechatModel::where(['openid'=>$openid])->first();
+            if($u){
+                echo '用户已存在';
+            }else{
+                $user_data = [
+                    'openid'            => $openid,
+                    'add_time'          => time(),
+                    'nickname'          => $user_info['nickname'],
+                    'sex'               => $user_info['sex'],
+                    'headimgurl'        => $user_info['headimgurl'],
+                    'subscribe_time'    => $sub_time,
+                ];
+
+                $id = WechatModel::insertGetId($user_data);
+                var_dump($id);
+
+            }
+
+        }
 
 
         $log_str = date('Y-m-d H:i:s') . "\n" . $data . "\n<<<<<<<";
