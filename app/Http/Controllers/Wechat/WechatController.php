@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Weixin;
 
 use App\Model\WechatModel;
-use App\Model\WeixinUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
