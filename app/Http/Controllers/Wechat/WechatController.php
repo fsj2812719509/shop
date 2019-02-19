@@ -42,7 +42,7 @@ class WechatController extends Controller
 
         //解析xml
         $xml = simplexml_load_string($data);
-        var_dump($xml);
+
 
         $event = $xml->Event;
 //
@@ -135,5 +135,17 @@ class WechatController extends Controller
         $data = json_decode(file_get_contents($url),true);
         //echo '<pre>';print_r($data);echo '</pre>';
         return $data;
+    }
+
+
+
+    /**
+     * 创建服务号菜单
+     */
+    public function creatMenu(){
+        //获取access_token 拼接请求接口
+        $url ='https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->getWXAccessToken();
+
+        echo $url;echo '</br>';
     }
 }
