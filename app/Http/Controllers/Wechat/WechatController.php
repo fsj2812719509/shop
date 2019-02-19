@@ -19,7 +19,7 @@ class WechatController extends Controller
     {
         //echo __METHOD__;
         //$this->getWXAccessToken();
-        $this->getUserInfo(1);
+        echo 'Token: '. $this->getWXAccessToken();;
     }
 
     /**
@@ -77,7 +77,7 @@ class WechatController extends Controller
             }
         }elseif($event=='CLICK'){
             if($xml->Eventkey=='kefu01'){
-                $this->kefu01($openid,$xml->TouserName);
+                $this->kefu01($openid,$xml->ToUserName);
             }
 
         }
@@ -176,9 +176,9 @@ class WechatController extends Controller
             ]
         ];
 
-
+        $body = json_encode($data,JSON_UNESCAPED_UNICODE);
         $r = $client->request('POST', $url, [
-            'body' => json_encode($data)
+            'body' => $body
         ]);
 
         // 3 解析微信接口返回信息
