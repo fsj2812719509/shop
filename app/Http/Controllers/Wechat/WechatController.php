@@ -47,7 +47,7 @@ class WechatController extends Controller
         $event = $xml->Event;
 //
         if($event=='subscribe'){
-            $openid = $xml -> FormUserName;
+            $openid = $xml -> FromUserName;
             $sub_time = $xml -> CreateTime;
 
             echo 'openid'.$openid;echo'<br>';
@@ -58,7 +58,7 @@ class WechatController extends Controller
             echo '<pre>';print_r($user_info);echo '</pre>';
 
             //保存用户信息
-           /* $u = WechatModel::where(['openid'=>$openid])->first();
+            $u = WechatModel::where(['openid'=>$openid])->first();
             if($u){
                 echo '用户已存在';
             }else{
@@ -74,7 +74,7 @@ class WechatController extends Controller
                 $id = WechatModel::insertGetId($user_data);
                 var_dump($id);
 
-            }*/
+            }
 
         }
 
