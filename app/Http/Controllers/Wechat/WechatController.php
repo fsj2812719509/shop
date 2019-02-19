@@ -94,7 +94,7 @@ class WechatController extends Controller
     public function kefu01($openid,$from)
     {
         // 文本消息
-        $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello World, 现在时间'. date('Y-m-d H:i:s') .']]></Content></xml>';
+        $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. '小朋友你好，这里是佳佳, 现在是'. date('Y-m-d H:i:s') .']]></Content></xml>';
         echo $xml_response;
     }
 
@@ -164,9 +164,19 @@ class WechatController extends Controller
         $data = [
             "button"    => [
                 [
+                    "type"  => "view",      // view类型 跳转指定 URL
+                    "name"  => "骑猪看夕阳",
+                    "url"   => "https://www.baidu.com"
+                ],
+                [
                     "type"  => "click",
                     "name"  =>"老仙婆婆",
                     "key"   =>"kefu01"
+                ],
+                [
+                "type"  => "click",
+                "name"  =>"佳佳的",
+                "key"   =>"kefu01"
                 ]
 
             ]
