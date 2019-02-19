@@ -43,6 +43,7 @@ class WechatController extends Controller
 
         //解析xml
         $xml = simplexml_load_string($data);
+
         $event = $xml->Event;
         $openid = $xml -> FromUserName;
 //
@@ -50,7 +51,7 @@ class WechatController extends Controller
 
             $sub_time = $xml -> CreateTime;
 
-            echo 'openid'.$openid;echo'<br>';
+            echo 'openid: '.$openid;echo'<br>';
             echo '$sub_time: ' . $sub_time;
 
             //获取用户信息
@@ -163,11 +164,6 @@ class WechatController extends Controller
 
         $data = [
             "button"    => [
-                [
-                    "type"  => "view",      // view类型 跳转指定 URL
-                    "name"  => "骑猪看夕阳",
-                    "url"   => "https://www.baidu.com"
-                ],
                 [
                     "type"  => "click",
                     "name"  =>"老仙婆婆",
