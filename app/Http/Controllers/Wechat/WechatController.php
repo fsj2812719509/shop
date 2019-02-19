@@ -143,10 +143,10 @@ class WechatController extends Controller
      * 创建服务号菜单
      */
     public function createMenu(){
-        //echo __METHOD__;
+        echo __METHOD__;exit;
         // 1 获取access_token 拼接请求接口
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->getWXAccessToken();
-        echo $url;echo '</br>';exit;
+        //echo $url;echo '</br>';exit;
 
         //2 请求微信接口
         $client = new GuzzleHttp\Client(['base_uri' => $url]);
