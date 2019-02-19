@@ -79,6 +79,8 @@ class WechatController extends Controller
         }elseif($event=='CLICK'){               //click 菜单
             if($xml->EventKey=='kefu01'){
                 $this->kefu01($openid,$xml->ToUserName);
+            }elseif($xml->EventKey=='kefu02'){
+                $this->kefu02($openid,$xml->ToUserName);
             }
         }
 
@@ -95,6 +97,12 @@ class WechatController extends Controller
     {
         // 文本消息
         $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. '近朱者赤,近你者甜❤]]></Content></xml>';
+        echo $xml_response;
+    }
+    public function kefu02($openid,$from)
+    {
+        // 文本消息
+        $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. '你知道我的缺点是什么吗？缺点你❤]]></Content></xml>';
         echo $xml_response;
     }
 
@@ -176,7 +184,7 @@ class WechatController extends Controller
                 [
                 "type"  => "click",
                 "name"  =>"佳佳的",
-                "key"   =>"kefu01"
+                "key"   =>"kefu02"
                 ]
 
             ]
