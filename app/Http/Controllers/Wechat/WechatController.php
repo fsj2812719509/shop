@@ -76,11 +76,10 @@ class WechatController extends Controller
                 var_dump($id);
 
             }
-        }elseif($event=='CLICK'){
-            if($xml->Eventkey=='kefu01'){
+        }elseif($event=='CLICK'){               //click 菜单
+            if($xml->EventKey=='kefu01'){
                 $this->kefu01($openid,$xml->ToUserName);
             }
-
         }
 
 
