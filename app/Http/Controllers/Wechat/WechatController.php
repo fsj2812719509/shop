@@ -134,4 +134,14 @@ class WeixinController extends Controller
         //echo '<pre>';print_r($data);echo '</pre>';
         return $data;
     }
+
+    /**
+     * 创建服务号菜单
+     */
+    public  function createMenu(){
+        //获取access_token拼接请求接口
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->getWXAccessToken();
+        echo $url;
+
+    }
 }

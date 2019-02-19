@@ -103,6 +103,7 @@ Route::get('/Wechat/valid','Wechat\WechatController@validToken');
 Route::get('/Wechat/valid1','Wechat\WechatController@validToken1');
 Route::post('/Wechat/valid1','Wechat\WechatController@wxEvent');        //接收微信服务器事件推送
 Route::post('/Wechat/valid','Wechat\WechatController@validToken');
+Route::post('/Wechat/creatmenu','Wechat\WechatController@createMenu');
 
 
 
