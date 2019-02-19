@@ -51,7 +51,7 @@ class WechatController extends Controller
         if(isset($xml->MsgType)){
             if($xml->MsgType=='text'){
                 $msg = $xml->Content;
-                $xml_response = $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你眨一眨眼睛就变成小星星落入我的心]]></Content></xml>';
+                $xml_response = $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你眨一眨眼睛就变成小星星落入我的心🖤]]></Content></xml>';
                 echo $xml_response;
                 exit();
             }
