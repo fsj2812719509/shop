@@ -105,7 +105,7 @@ Route::post('/Wechat/valid1','Wechat\WechatController@wxEvent');        //接收
 Route::post('/Wechat/valid','Wechat\WechatController@validToken');
 
 
-Route::post('/Wechat/creatmenu','Wechat\WechatController@creatMenu');
+Route::post('/Wechat/createmenu','Wechat\WechatController@createMenu');
 
 
 
