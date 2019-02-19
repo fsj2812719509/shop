@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Wechat;
 use App\Model\WechatModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GuzzleHttp;
 
 use Illuminate\Support\Facades\Redis;
 
