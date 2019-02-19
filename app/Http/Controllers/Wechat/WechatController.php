@@ -170,7 +170,7 @@ class WechatController extends Controller
                 [
                     "type"  => "click",
                     "name"  =>"老仙婆婆",
-                    "key"   =>'kefu01'
+                    "key"   =>"kefu01"
                 ]
 
             ]
