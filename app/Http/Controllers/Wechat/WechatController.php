@@ -202,7 +202,7 @@ class WechatController extends Controller
                              "url"   => "https://www.baidu.com",
                         ],
                         [
-                            "type"  => "click",
+                            "type"  => "view",
                             "name"  => "🍬",
                             "url"   => "https://www.baidu.com",
                         ]
