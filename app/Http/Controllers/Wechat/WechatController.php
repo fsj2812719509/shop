@@ -184,19 +184,29 @@ class WechatController extends Controller
         $data = [
             "button"    => [
                 [
-                    "type"  => "view",      // view类型 跳转指定 URL
-                    "name"  => "骑猪看夕阳",
-                    "url"   => "https://www.baidu.com"
-                ],
-                [
                     "type"  => "click",
                     "name"  =>"老仙婆婆",
                     "key"   =>"kefu01"
                 ],
                 [
-                "type"  => "click",
-                "name"  =>"佳佳的",
-                "key"   =>"kefu02"
+                    "type"  => "click",
+                    "name"  =>"佳佳的",
+                    "key"   =>"kefu02"
+                ],
+                [
+                    "name" => "骑猪看夕阳",
+                    "sub_button" => [
+                        [
+                             "type"  => "view",
+                             "name"  => "🐷",
+                             "url"   => "https://www.baidu.com",
+                        ],
+                        [
+                            "type"  => "click",
+                            "name"  => "🍬",
+                            "url"   => "https://www.baidu.com",
+                        ]
+                    ]
                 ]
 
             ]
