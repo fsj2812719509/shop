@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Storage;
 class WechatController extends Controller
 {
     //
-
     protected $redis_weixin_access_token = 'str:weixin_access_token';     //微信 access_token
 
-    public function test()
-    {
+    public function test(){
         //echo __METHOD__;
         //$this->getWXAccessToken();
         echo 'Token: '. $this->getWXAccessToken();;
@@ -27,8 +25,7 @@ class WechatController extends Controller
     /**
      * 首次接入
      */
-    public function validToken1()
-    {
+    public function validToken1(){
         //$get = json_encode($_GET);
         //$str = '>>>>>' . date('Y-m-d H:i:s') .' '. $get . "<<<<<\n";
         //file_put_contents('logs/weixin.log',$str,FILE_APPEND);
@@ -44,7 +41,7 @@ class WechatController extends Controller
 
         //解析xml
         $xml = simplexml_load_string($data);
-<<<<<<< HEAD
+
         //记录日志
         $log_str = date('Y-m-d H:i:s') . "\n" . $data . "\n<<<<<<<";
         file_put_contents('logs/wx_event.log',$log_str,FILE_APPEND);
@@ -81,14 +78,6 @@ class WechatController extends Controller
 
         //判断事件类型
         if($event=='subscribe'){
-
-=======
-
-        $event = $xml->Event;
-
-        if($event=='subscribe'){
-            $openid = $xml -> FromUserName;
->>>>>>> wechat
             $sub_time = $xml -> CreateTime;
 
             echo 'openid: '.$openid;echo'<br>';
@@ -114,20 +103,16 @@ class WechatController extends Controller
 
                 $id = WechatModel::insertGetId($user_data);
                 var_dump($id);
-
             }
-<<<<<<< HEAD
+
         }elseif($event=='CLICK'){               //click 菜单
             if($xml->EventKey=='kefu01'){
                 $this->kefu01($openid,$xml->ToUserName);
             }elseif($xml->EventKey=='kefu02'){
                 $this->kefu02($openid,$xml->ToUserName);
             }
-=======
 
->>>>>>> wechat
         }
-
 
         $log_str = date('Y-m-d H:i:s') . "\n" . $data . "\n<<<<<<<";
         file_put_contents('logs/wx_event.log',$log_str,FILE_APPEND);
@@ -137,23 +122,17 @@ class WechatController extends Controller
     /**
      * 客服处理
      */
-    public function kefu01($openid,$from)
-    {
+    public function kefu01($openid,$from){
         // 文本消息
         $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. '近朱者赤,近你者甜❤]]></Content></xml>';
         echo $xml_response;
     }
-    public function kefu02($openid,$from)
-    {
+    public function kefu02($openid,$from){
         // 文本消息
         $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. '你如星辰似海 似万鲸宇宙❤]]></Content></xml>';
         echo $xml_response;
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> wechat
     /**
      * 接收事件推送
      */
@@ -204,7 +183,7 @@ class WechatController extends Controller
         return $data;
     }
 
-<<<<<<< HEAD
+
     /**
      * 创建服务号菜单
      */
@@ -226,7 +205,7 @@ class WechatController extends Controller
                 ],
                 [
                     "type"  => "click",
-                    "name"  =>"佳佳的",
+                    "name"  =>"佳佳",
                     "key"   =>"kefu02"
                 ],
                 [
@@ -266,75 +245,34 @@ class WechatController extends Controller
 
         }
 
-
-
     }
 
 
-=======
->>>>>>> wechat
+
     /**
      * 保存用户上传的照片
      */
-<<<<<<< HEAD
-    public function dlWxImg($media_id){
-        $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$this->getWXAccessToken().'&media_id='.$media_id;
+
+    public function dlWxImg($media_id)
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token=' . $this->getWXAccessToken() . '&media_id=' . $media_id;
         //保存图片
         $client = new GuzzleHttp\Client();
         $response = $client->get($url);
 
         //获取文件名
         $file_info = $response->getHeader('Content-disposition');
-        $file_name = substr(rtrim($file_info[0],'"'),-20);
+        $file_name = substr(rtrim($file_info[0], '"'), -20);
 
-        $wx_image_path = 'wx/images/'.$file_name;
+        $wx_image_path = 'wx/images/' . $file_name;
         //保存图片
-        $img = Storage::disk('local')->put($wx_image_path,$response->getBody());
-        if($img){//保存成功
+        $img = Storage::disk('local')->put($wx_image_path, $response->getBody());
+        if ($img) {//保存成功
 
         }else{//保存失败
-=======
-    public function createMenu(){
-        //echo __METHOD__;
-        // 1 获取access_token 拼接请求接口
-        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->getWXAccessToken();
-        //echo $url;echo '</br>';
-
-        //2 请求微信接口
-        $client = new GuzzleHttp\Client(['base_uri' => $url]);
-
-        $data = [
-            "button"    => [
-                [
-                    "type"  => "view",      // view类型 跳转指定 URL
-                    "name"  => "Lening222",
-                    "url"   => "https://www.baidu.com"
-                ]
-            ]
-        ];
-
-
-        $r = $client->request('POST', $url, [
-            'body' => json_encode($data)
-        ]);
-
-        // 3 解析微信接口返回信息
-
-        $response_arr = json_decode($r->getBody(),true);
-        //echo '<pre>';print_r($response_arr);echo '</pre>';
-
-        if($response_arr['errcode'] == 0){
-            echo "菜单创建成功";
-        }else{
-            echo "菜单创建失败，请重试";echo '</br>';
-            echo $response_arr['errmsg'];
->>>>>>> wechat
 
         }
-
     }
-
-<<<<<<< HEAD
     /**
      * 下载语音文件
      */
@@ -383,11 +321,5 @@ class WechatController extends Controller
         }
 
     }
-
-<<<<<<< HEAD
-=======
->>>>>>> wechat
-
-=======
->>>>>>> wechat_user
 }
+
