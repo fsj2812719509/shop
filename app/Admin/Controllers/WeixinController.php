@@ -79,7 +79,7 @@ class WeixinController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new WeixinUser);
+        $grid = new Grid(new WechatModel);
 
         $grid->id('Id');
         $grid->uid('Uid');
@@ -103,7 +103,7 @@ class WeixinController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(WeixinUser::findOrFail($id));
+        $show = new Show(WechatModel::findOrFail($id));
 
         $show->id('Id');
         $show->uid('Uid');
@@ -124,7 +124,7 @@ class WeixinController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new WeixinUser);
+        $form = new Form(new WechatModel);
 
         $form->number('uid', 'Uid');
         $form->text('openid', 'Openid');
