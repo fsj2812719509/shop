@@ -65,6 +65,8 @@ class WechatController extends Controller
                     $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[不要让我看见你，不然见你一次喜欢你一次👧]]></Content></xml>';
                     echo $xml_response;
                 }
+            }elseif($xml->MsgType=='voice'){
+                $this->dlVoice($xml->MediaId);
             }
             exit();
         }
@@ -268,6 +270,34 @@ class WechatController extends Controller
         }else{//保存失败
 
         }
+
+    }
+
+    /**
+     * 下载语音文件
+     */
+    public function dlVoice($media_id){
+        $url = $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$this->getWXAccessToken().'&media_id='.$media_id;
+
+        //下载语音文件
+        $client = new GuzzleHttp\Client();
+        $response = $client->get($url);
+
+        //获取文件名
+        $file_info = $response->getHeader('Content-disposition');
+        $file_name = substr(rtrim($file_info[0],'"'),-20);
+
+        $wx_image_path = 'wx/vioce/'.$file_name;
+        //保存图片
+        $voice = $r = Storage::disk('local')->put($wx_image_path,$response->getBody());
+        if($voice){//保存成功
+
+        }else{//保存失败
+
+        }
+
+
+
 
     }
 
