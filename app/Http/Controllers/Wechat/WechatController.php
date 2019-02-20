@@ -44,6 +44,9 @@ class WechatController extends Controller
 
         //解析xml
         $xml = simplexml_load_string($data);
+        //记录日志
+        $log_str = date('Y-m-d H:i:s') . "\n" . $data . "\n<<<<<<<";
+        file_put_contents('logs/wx_event.log',$log_str,FILE_APPEND);
 
         $event = $xml->Event;
         $openid = $xml -> FromUserName;
@@ -55,7 +58,15 @@ class WechatController extends Controller
                 $xml_response = $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你眨一眨眼睛就变成小星星落入我的心🖤]]></Content></xml>';
                 echo $xml_response;
                 exit();
+            }elseif($xml->MsgType=='image'){
+                //视业务需求是否下载保存图片
+                if(1){
+                    $this -> dlWxImg($xml->MediaId);
+                    $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. str_random(10) . ' >>> ' . date('Y-m-d H:i:s') .']]></Content></xml>';
+                    echo $xml_response;
+                }
             }
+            exit();
         }
 
 
