@@ -62,7 +62,7 @@ class WechatController extends Controller
                 //视业务需求是否下载保存图片
                 if(1){
                     $this -> dlWxImg($xml->MediaId);
-                    $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. str_random(10) . ' >>> ' . date('Y-m-d H:i:s') .']]></Content></xml>';
+                    $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[不要让我看见你，不然见你一次喜欢你一次👧]]></Content></xml>';
                     echo $xml_response;
                 }
             }
