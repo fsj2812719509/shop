@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use GuzzleHttp;
 
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
 
 class WechatController extends Controller
 {
@@ -233,5 +234,31 @@ class WechatController extends Controller
 
 
     }
+
+
+    /**
+     * 保存用户上传的照片
+     */
+    public function dlWxImg($media_id){
+        $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$this->getWXAccessToken().'&media_id='.$media_id;
+        //保存图片
+        $client = new GuzzleHttp\Client();
+        $response = $client->get($url);
+
+        //获取文件名
+        $file_info = $response->getHeader('Content-disposition');
+        $file_name = substr(rtrim($file_info[0],'"'),-20);
+
+        $wx_image_path = 'wx/images/'.$file_name;
+        //保存图片
+        $img = Storage::disk('local')->put($wx_image_path,$response->getBody());
+        if($img){//保存成功
+
+        }else{//保存失败
+
+        }
+
+    }
+
 
 }
