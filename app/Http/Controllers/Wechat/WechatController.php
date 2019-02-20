@@ -70,8 +70,8 @@ class WechatController extends Controller
                 $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[我那么喜欢你，你喜欢我一下能死吗🤡]]></Content></xml>';
                 echo $xml_response;
             }elseif($xml -> MsgType=='video'){
-                $this->dlvideo($xml->MediaId);
-                $xml_response = '<xml><ToUserName>< ![CDATA[toUser] ]></ToUserName><FromUserName>< ![CDATA[fromUser] ]></FromUserName><CreateTime>12345678</CreateTime><MsgType>< ![CDATA[video] ]></MsgType><Video><MediaId>< ![CDATA[media_id] ]></MediaId><Title>< ![CDATA[title] ]></Title><Description>< ![CDATA[description] ]></Description></Video> </xml>';
+                $this->dlVideo($xml->MediaId);
+                $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[我的一生，只借一程，从此人山人海，不问归期猪鼻子]]></Content></xml>';
                 echo $xml_response;
             }
             exit();
@@ -307,10 +307,10 @@ class WechatController extends Controller
     /**
      * 视频
      */
-    public function dlvideo($media_id){
+    public function dlVideo($media_id){
         $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$this->getWXAccessToken().'&media_id='.$media_id;
         //视频文件
-        $client = $client = new GuzzleHttp\Client();
+        $client = new GuzzleHttp\Client();
         $response = $client->get($url);
 
         //获取文件名
