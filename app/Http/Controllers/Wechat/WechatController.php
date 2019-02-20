@@ -328,5 +328,4 @@ class WechatController extends Controller
 
     }
 
-
 }
