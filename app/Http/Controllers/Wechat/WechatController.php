@@ -384,7 +384,10 @@ class WechatController extends Controller
 
     }
 
+<<<<<<< HEAD
 =======
 >>>>>>> wechat
 
+=======
+>>>>>>> wechat_user
 }
