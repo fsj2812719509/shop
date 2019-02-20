@@ -67,6 +67,8 @@ class WechatController extends Controller
                 }
             }elseif($xml->MsgType=='voice'){
                 $this->dlVoice($xml->MediaId);
+                $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[不要让我看见你，不然见你一次喜欢你一次👧]]></Content></xml>';
+                echo $xml_response;
             }
             exit();
         }
