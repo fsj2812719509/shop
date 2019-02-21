@@ -89,7 +89,7 @@ class WeixinMediaController extends Controller
         $grid->format('Format');
         $grid->msg_id('Msg id');
         $grid->local_file_name('Local file name')->display(function ($lmg_url){
-            return '<img src="'.$lmg_url.'">';
+            return '<img src="http://fushijia.comcto.com/wx/images/'.$lmg_url.'">';
         });
         $grid->local_file_path('Local file path');
 
