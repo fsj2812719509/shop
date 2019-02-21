@@ -93,6 +93,7 @@ class WeixinMediaController extends Controller
         });
         $grid->local_file_path('Local file path');
 
+        return $grid;
 
     }
 
