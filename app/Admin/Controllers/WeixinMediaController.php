@@ -223,7 +223,7 @@ class WeixinMediaController extends Controller
     public function formShow()
     {
 
-        return view('test.form');
+        return view('admin.weixin');
 
     }
 
