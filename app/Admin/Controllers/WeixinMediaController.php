@@ -220,10 +220,14 @@ class WeixinMediaController extends Controller
 
 
 
-    public function formShow()
+    public function formShow(Content $content)
     {
 
-        return view('admin.weixin');
+        return $content
+            ->header('Index')
+            ->description('description')
+            ->body(view('admin.form'));
+
 
     }
 
