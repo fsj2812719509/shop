@@ -136,4 +136,22 @@ class WeixinController extends Controller
 
         return $form;
     }
+
+    /**
+     * 消息群发
+     */
+    public function sendMsgView(Content $content){
+        return $content
+            ->header('微信')
+            ->description('群发消息')
+            ->body(view('admin.weixin.send_msg'));
+    }
+    public function sendMsg(){
+        //获取用户openID
+        $list = WechatModel::all()->puck('openid')->take(10)->toArray();
+        //群发消息
+
+        echo '<pre>';print_r($list);echo '</pre>';
+        echo '<pre>';print_r($_POST);echo '</pre>';
+    }
 }

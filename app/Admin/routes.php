@@ -17,4 +17,8 @@ Route::group([
     $router->resource('/weixin',WeixinController::class);
     $router->resource('/weixinMedia',WeixinMediaController::class);
 
+    $router->get('/formshow','WeixinMediaController@formShow');//永久素材
+    $router->post('/formshow','WeixinMediaController@formTest');
+
+
 });
