@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Model\WechatModel;
 use App\Model\WeixinUser;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -39,7 +40,7 @@ class WeixinSendController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new WeixinUser);
+        $form = new Form(new WechatModel);
         $form->textarea('text','text');
         return $form;
     }
