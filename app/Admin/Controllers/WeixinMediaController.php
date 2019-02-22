@@ -227,8 +227,6 @@ class WeixinMediaController extends Controller
             ->header('Index')
             ->description('description')
             ->body(view('admin.weixin'));
-
-
     }
 
     public function formTest(Request $request)

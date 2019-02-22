@@ -1,4 +1,4 @@
-<form action="fromshow" method="post" enctype="multipart/form-data">
+<form action="formshow" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
     <input type="text" name="text">
     <input type="file" name="media">
