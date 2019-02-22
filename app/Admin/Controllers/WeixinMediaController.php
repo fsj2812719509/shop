@@ -226,7 +226,7 @@ class WeixinMediaController extends Controller
         return $content
             ->header('Index')
             ->description('description')
-            ->body(view('admin.form'));
+            ->body(view('admin.weixin'));
 
 
     }
