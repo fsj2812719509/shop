@@ -19,6 +19,5 @@ class VerifyCsrfToken extends Middleware
         '/admin/weixinChat',
         '/admin/massage'
 
-
     ];
 }
