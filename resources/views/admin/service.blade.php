@@ -1,18 +1,16 @@
 <h2><b style="color: red">客服聊天</b>:{{$nickname}}</h2>
 
 <div class="chat" id="chat_div">
-    @foreach($info as $v)
+    <table>
         <thead id="show">
-            <table>
-
+            @foreach($info as $v)
                 <tr>
                     <td><h4>{{$nickname}}:</h4></td>
                     <td>{{$v['message']}}</td>
                 </tr>
-
-            </table>
+            @endforeach
         </thead>
-    @endforeach
+    </table>
 </div>
 
 <form action="" class="form-inline">
@@ -58,7 +56,7 @@
                     for(var i in msg['data']){
                         _tr+=
                             "<tr>" +
-                            "<td>"+"<h3>"+msg['nickname']+":"+"</h3>"+"</td>" +
+                            "<td>"+"<h3>"+msg['name']+":"+"</h3>"+"</td>" +
                             "<td>"+msg['data'][i]['message']+"</td>" +
                             "</tr>"
 
@@ -67,9 +65,8 @@
                 },'json'
             )
         };
-
-        var a =setInterval(function(){
-            clear();
+        var a = setInterval(function(){
+            clear()
         },1000*3)
 
     })
