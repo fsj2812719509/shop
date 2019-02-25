@@ -24,6 +24,10 @@ Route::group([
     $router->get('/formshow','WeixinMediaController@formShow');
     $router->post('/formshow','WeixinMediaController@formTest');
 
+    //客服聊天
+    $router->get('/service','WeixinController@weixinService');
+
+
 
 
 

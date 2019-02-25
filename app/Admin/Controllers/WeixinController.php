@@ -88,7 +88,7 @@ class WeixinController extends Controller
         $grid->nickname('Nickname');
         $grid->sex('Sex');
         $grid->headimgurl('Headimgurl')->display(function ($lmg_url){
-            return '<img src="'.$lmg_url.'">';
+            return '</a href="weixinService?url='.$lmg_url.'"><img src="'.$lmg_url.'"></a>';
         });
         $grid->subscribe_time('Subscribe time');
 
@@ -154,4 +154,18 @@ class WeixinController extends Controller
         echo '<pre>';print_r($list);echo '</pre>';
         echo '<pre>';print_r($_POST);echo '</pre>';
     }
+
+    /**
+     * 客服聊天
+     */
+    public function weixinService(Content $content){
+        $headimgurl = $_GET['lmg_url'];
+        $img = WechatModel::where(['headimgurl'=>$headimgurl])->first();
+        print_r($img);
+        return $content
+            ->header('Index')
+            ->description('description')
+            ->body(view('admin.service'));
+    }
+
 }

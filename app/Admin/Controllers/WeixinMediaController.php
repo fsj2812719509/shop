@@ -261,6 +261,5 @@ class WeixinMediaController extends Controller
 
     }
 
-
 }
 

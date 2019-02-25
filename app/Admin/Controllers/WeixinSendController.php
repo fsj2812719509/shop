@@ -3,7 +3,6 @@
 namespace App\Admin\Controllers;
 
 use App\Model\WechatModel;
-use App\Model\WeixinUser;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -33,7 +32,8 @@ class WeixinSendController extends Controller
             ->description('description')
             ->body($this->form());
     }
-    /**
+    /**l.l.lbe
+     *  -
      * Make a form builder.
      *
      * @return Form
@@ -46,7 +46,7 @@ class WeixinSendController extends Controller
     }
 
     /**
-     * 获取微信AccessToken
+     * 获取微信AccessTokenk
      */
     public function getWXAccessToken()
     {
@@ -101,6 +101,8 @@ class WeixinSendController extends Controller
         }
 
     }
+
+
 
 
 }
