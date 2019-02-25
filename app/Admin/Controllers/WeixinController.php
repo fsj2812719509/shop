@@ -241,5 +241,16 @@ class WeixinController extends Controller
         }
     }
 
+    public function massage(Request $request){
+        $openid=$request->input('openid');
+        $info=WechatModel::where(['openid'=>$openid])->first();
+        $name=$info['nickname'];
+        $data=WeixinChatModel::where(['openid'=>$openid])->get();
+        $arr['name']=$name;
+        $arr['data']=$data;
+        echo json_encode($arr);
+    }
+
+
 
 }

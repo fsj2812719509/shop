@@ -2,12 +2,16 @@
 
 <div class="chat" id="chat_div">
     @foreach($info as $v)
-        <table>
-            <tr>
-                <td><h4>{{$nickname}}:</h4></td>
-                <td>{{$v['message']}}</td>
-            </tr>
-        </table>
+        <thead id="show">
+            <table>
+
+                <tr>
+                    <td><h4>{{$nickname}}:</h4></td>
+                    <td>{{$v['message']}}</td>
+                </tr>
+
+            </table>
+        </thead>
     @endforeach
 </div>
 
@@ -18,6 +22,9 @@
     <textarea name="" id="send_msg" cols="100" rows="5"></textarea>
     <input type="button" id="btn" value="发送">
 </form>
+
+<div style="float:right" id="right"></div>
+
 <script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>
 
 <script>
@@ -31,9 +38,38 @@
                 'weixinChat',
                 {message:send_msg,openid:openid},
                 function(msg){
-                    console.log(msg);
+                    if(msg=='发送成功'){
+                        $("#right").append('<h3>'+text+':客服</h3>');
+                        $("#send_msg").val();
+                    }
                 }
             )
         })
+
+
+        var clear=function(){
+            var openid=$('#openid').val();
+            var _tr='';
+            $.post(
+                "massage",
+                {openid:openid},
+                function(msg){
+                    for(var i in msg['data']){
+                        _tr+=
+                            "<tr>" +
+                            "<td>"+"<h3>"+msg['nickname']+":"+"</h3>"+"</td>" +
+                            "<td>"+msg['data'][i]['message']+"</td>" +
+                            "</tr>"
+
+                    }
+                    $('#show').html(_tr);
+                },'json'
+            )
+        };
+
+        var a =setInterval(function(){
+            clear();
+        },1000*3)
+
     })
 </script>

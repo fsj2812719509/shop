@@ -28,6 +28,7 @@ Route::group([
     $router->get('/weixinService','WeixinController@weixinService');
     $router->post('/weixinChat','WeixinController@dochat');
     $router->get('/token','WeixinController@getWXAccessToken');
+    $router->post('/massage','WeixinController@massage');
 
 
 
