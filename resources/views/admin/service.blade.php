@@ -54,15 +54,16 @@
                 "massage",
                 {openid:openid},
                 function(msg){
-                    for(var i in msg['data']){
+                    /*for(var i in msg['data']){
                         _tr+=
                             "<tr>" +
                             "<td>"+"<h3>"+msg['nickname']+":"+"</h3>"+"</td>" +
                             "<td>"+msg['data'][i]['message']+"</td>" +
                             "</tr>"
 
-                    }
+                    }*/
                     $('#show').html(_tr);
+                    console.log(msg);
                 },'json'
             )
         };
