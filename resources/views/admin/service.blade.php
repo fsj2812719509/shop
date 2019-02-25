@@ -39,7 +39,7 @@
                 {message:send_msg,openid:openid},
                 function(msg){
                     if(msg=='发送成功'){
-                        $("#right").append('<h3>'+text+':客服</h3>');
+                        $("#right").append('<h3>'+send_msg+':客服</h3>');
                         $("#send_msg").val();
                     }
                 }
