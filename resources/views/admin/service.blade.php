@@ -12,8 +12,9 @@
         </thead>
     </table>
 </div>
+<div style="float:right" id="right"></div>
 
-<form action="" class="form-inline">
+<form class="form-inline">
     {{csrf_field()}}
     <input type="hidden" value="{{$openid}}" id="openid">
     <input type="hidden" value="1" id="msg_pos">
@@ -21,7 +22,7 @@
     <input type="button" id="btn" value="发送">
 </form>
 
-<div style="float:right" id="right"></div>
+
 
 <script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>
 
@@ -38,7 +39,7 @@
                 function(msg){
                     if(msg=='success'){
                         $("#right").append('<h3>'+send_msg+':客服</h3>');
-                        $("#send_msg").val();
+                        $("#send_msg").val("");
                     }
                 }
             )
