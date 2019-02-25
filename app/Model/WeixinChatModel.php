@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class WeixinChatModel extends Model
 {
     //
-    public $table = 'wx_massage';
+    public $table = 'wx_message';
+    public $timestamps = false;
 }

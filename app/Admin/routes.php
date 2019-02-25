@@ -26,6 +26,8 @@ Route::group([
 
     //客服聊天
     $router->get('/weixinService','WeixinController@weixinService');
+    $router->post('/weixinChat','WeixinController@dochat');
+    $router->get('/token','WeixinController@getWXAccessToken');
 
 
 
