@@ -1,3 +1,4 @@
+{{--
 <h2><b style="color: red">客服聊天</b>:{{$name}}</h2>
 <h2><img src="{{$img}}" alt=""></h2>
 
@@ -18,4 +19,5 @@
     <input type="hidden" value="1" id="msg_pos">
     <textarea name="" id="send_msg" cols="100" rows="5"></textarea>
     <button class="btn btn-info" id="send_msg_btn">Send<tton>
-</form>
+</form>--}}
+echo 123;
