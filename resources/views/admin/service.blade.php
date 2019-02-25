@@ -38,7 +38,7 @@
                 'weixinChat',
                 {message:send_msg,openid:openid},
                 function(msg){
-                    if(msg=='发送成功'){
+                    if(msg=='success'){
                         $("#right").append('<h3>'+send_msg+':客服</h3>');
                         $("#send_msg").val();
                     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Wechat;
 
 use App\Model\WechatModel;
 
+use App\Model\WeixinChatModel;
 use App\Model\WeixinMedia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -58,7 +59,15 @@ class WechatController extends Controller
                 $msg = $xml->Content;
                 $xml_response = $xml_response = '<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName><FromUserName><![CDATA[' . $xml->ToUserName . ']]></FromUserName><CreateTime>' . time() . '</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你眨一眨眼睛就变成小星星落入我的心🖤]]></Content></xml>';
                 echo $xml_response;
-                exit();
+
+                $data = [
+                    'openid' => $openid,
+                    'add_time'=>time(),
+                    'message'=>$msg
+                ];
+
+                $mid = WeixinChatModel::insertGetId($data);
+
             } elseif ($xml->MsgType == 'image') {
                 //视业务需求是否下载保存图片
                 if (1) {
