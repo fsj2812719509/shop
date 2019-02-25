@@ -16,7 +16,8 @@ class VerifyCsrfToken extends Middleware
         '/cartadd',
         '/pay/alipay/notify',
         '/Wechat/valid1',
-        '/admin/weixinChat'
+        '/admin/weixinChat',
+        'admin/message'
 
 
     ];
