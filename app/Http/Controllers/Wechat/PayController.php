@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Wechat\WXBizDataCryptController;
 use App\Model\OrderModel;
 
 class PayController extends Controller
