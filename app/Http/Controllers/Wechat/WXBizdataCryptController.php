@@ -4,9 +4,9 @@
  *
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
-namespace App\Http\Controllers\Weixin;
+namespace App\Http\Controllers\Wechat;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Weixin\ErrorCodeController as ErrorCode;
+use App\Http\Controllers\Wechat\ErrorCodeController as ErrorCode;
 class WXBizDataCryptController extends Controller
 {
     private $appid;

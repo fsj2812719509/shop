@@ -9,7 +9,7 @@
  *    <li>-41016: base64解密失败</li>
  * </ul>
  */
-namespace App\Http\Controllers\Weixin;
+namespace App\Http\Controllers\Wechat;
 use App\Http\Controllers\Controller;
 class ErrorCodeController extends Controller
 {

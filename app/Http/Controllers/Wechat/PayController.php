@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Weixin\WXBizDataCryptController;
+use App\Http\Controllers\Wechat\WXBizDataCryptController;
 use App\Model\OrderModel;
 
 class PayController extends Controller
@@ -12,7 +12,7 @@ class PayController extends Controller
     //
 
     public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
-    public $weixin_notify_url = 'http://fushijia.comcto.com/weixin/pay/notice';     //支付通知回调
+    public $weixin_notify_url = 'http://fushijia.comcto.com/wechat/pay/notice';     //支付通知回调
 
     public function test()
     {
