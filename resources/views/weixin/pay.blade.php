@@ -6,6 +6,7 @@
 @section('content')
     <div id="code"></div>
 @endsection
+<script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>
 <script>
     var code1 =$("#code1").val();
     $("#code").qrcode({
