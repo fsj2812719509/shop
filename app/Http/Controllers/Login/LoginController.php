@@ -31,8 +31,8 @@ class LoginController extends Controller{
 
                 $request->session()->put('token',$token);
                 $request->session()->put('uid',$data->uid);
-
                 echo '登录成功';
+                header('refresh:2','/goods');
             }else{
                 echo '登录失败,用户名或密码不正确';
                 header('refresh:2','/login1');
