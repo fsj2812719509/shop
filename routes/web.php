@@ -111,7 +111,7 @@ Route::post('/Wechat/creatmenu','Wechat\WechatController@createMenu');
 
 
 //微信支付
-Route::get('/weixin/pay/test','Wechat\PayController@test');     //微信支付测试
+Route::get('/weixin/pay/test/{order_id}','Wechat\PayController@test');     //微信支付测试
 Route::post('/weixin/pay/notice','Wechat\PayController@notice');     //微信支付通知回调
 
 

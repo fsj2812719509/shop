@@ -18,7 +18,8 @@
 
                 <td>
                     @if($v['is_pay']==0)
-                        <a href="/pay/o/{{$v['order_id']}}">未支付</a>
+                        <a href="/pay/o/{{$v['order_id']}}">支付宝</a>
+                        <a href="/weixin/pay/test/{{$v['order_id']}}">微信</a>
                     @elseif($v['is_pay']==1)
                         <b>已支付</b>
                     @endif

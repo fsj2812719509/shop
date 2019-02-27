@@ -3,6 +3,7 @@ $("#add_cart_btn").click(function (e) {
     var goods_num  = $("#goods_num").val();
     var goods_id = $("#goods_id").val();
 
+
     $.ajax({
         header:{
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -16,8 +17,9 @@ $("#add_cart_btn").click(function (e) {
             if(res.error==301){
                 window.location.href=res.url;
             }else if(res.error==0){
-                alert(res.msg);
-                    window.location.href='/ ';
+                alert('加入购物车成功');
+                /*alert(res.msg);
+                    window.location.href='/ ';*/
             }
         }
     })

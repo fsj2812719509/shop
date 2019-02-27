@@ -56,11 +56,11 @@
 
 @section('footer')
 
-   {{-- <script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>--}}
-    <script src="http://zty.tactshan.com/js/jquery-3.2.1.min.js"/>
+    <script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>
+    {{--<script src="http://zty.tactshan.com/js/jquery-3.2.1.min.js"/>--}}
 
-    {{--<script src="{{URL::asset('/bootstrap/js/bootstrap.min.js')}}"></script>--}}
-   <script src="http://zty.tactshan.com/bootstrap/js/bootstrap.min.js"/>
+    <script src="{{URL::asset('/bootstrap/js/bootstrap.min.js')}}"></script>
+   {{--<script src="http://zty.tactshan.com/bootstrap/js/bootstrap.min.js"/--}}
 
 @show
 </body>
