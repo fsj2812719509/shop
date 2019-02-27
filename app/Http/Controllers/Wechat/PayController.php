@@ -13,12 +13,14 @@ class PayController extends Controller
     public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
     public $weixin_notify_url = 'http://fushijia.comcto.com/weixin/pay/notice';     //支付通知回调
 
-    public function test()
+    public function test($order_name)
     {
 
 
         //
         $total_fee = 1;         //用户要支付的总金额
+
+        setcookie('order_sn',$order_name,time()+3600,'/','',false,true);
         $order_id = OrderModel::generateOrderSN();
 
         $order_info = [
@@ -178,6 +180,16 @@ class PayController extends Controller
 
             if($sign){       //签名验证成功
                 //TODO 逻辑处理  订单状态更新
+                $order_name = $xml['out_trade_no'];
+                $data = [
+                    'pay_time'=>time(),
+                    'is_pay'=>2,
+                    'is_delete'=>2,
+                    'plat_oid'=>$xml['transaction_id'],
+                    'plat'=>2
+                ];
+                $res = OrderModel::where(['order_name'=>$order_name])->upate($data);
+
 
             }else{
                 //TODO 验签失败
@@ -190,6 +202,43 @@ class PayController extends Controller
         $response = '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>';
         echo $response;
 
+    }
+
+    /** 解密 */
+    public function deciphering($url){
+        $code_url=base64_decode($url);
+        $order_name = $_COOKIE['order_name'];
+        return view('order.weixinPay',['code_url'=>$code_url,'order_name'=>$order_name]);
+
+    }
+
+    /** 支付成功 */
+    public function success(Resquert $resquert){
+        $order_name  = $resquert->input('order_name');
+        $arr = OrderModel::wehere(['order_name'=>$order_name])->first();
+        if($arr['is_pay']==2){
+             echo 1;
+        }else{
+            echo 2;
+        }
+    }
+
+    public function win(){
+        echo '支付成功';
+    }
+
+    /**
+     *验签
+     */
+    public function atteStation($xml){
+        $this->values = [];
+        $this->values = $xml;
+        $setSign=$this->setSign();
+        if($setSign==$xml['sign']){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
