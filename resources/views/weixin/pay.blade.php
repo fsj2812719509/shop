@@ -2,10 +2,7 @@
 {{-- 用户登录--}}
 <input type="hidden" value="{{$code_url}}" id="code1">
 @extends('layouts.bst')
-
-@section('content')
     <div id="code"></div>
-@endsection
 <script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{URL::asset('/bootstrap/js/jquery.qrcode.min.js')}}"></script>
 <script>
