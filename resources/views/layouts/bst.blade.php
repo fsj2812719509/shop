@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div class="container">
+{{--<div class="container">
     <!-- Static navbar  -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -29,7 +29,7 @@
         </div><!--/.container-fluid -->
     </nav>
     @yield('content')
-</div>
+</div>--}}
 
 @section('footer')
 
