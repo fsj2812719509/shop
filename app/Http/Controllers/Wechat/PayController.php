@@ -191,7 +191,7 @@ class PayController extends Controller
                     'plat_oid'=>$xml['transaction_id'],
                     'plat'=>2
                 ];
-                OrderModel::where(['order_name'=>$order_name])->upate($data);
+                OrderModel::where(['order_name'=>$order_name])->update($data);
 
 
             }else{
