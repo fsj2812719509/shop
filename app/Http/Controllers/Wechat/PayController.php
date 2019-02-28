@@ -16,7 +16,6 @@ class PayController extends Controller
     public function test($order_name)
     {
 
-
         //
         $total_fee = 1;         //用户要支付的总金额
 
@@ -56,7 +55,10 @@ class PayController extends Controller
 //		echo 'prepay_id: '.$data->prepay_id;echo '<br>';
 //		echo 'trade_type: '.$data->trade_type;echo '<br>';
         $weixin = $data->code_url;
-        return view('weixin.pay',['code_url'=>$weixin]);
+        $url = base64_encode($weixin);
+        header("Refresh:0;url='/deciphering/$url'");
+
+       // return view('weixin.pay',['code_url'=>$weixin]);
 //        die;
         //echo '<pre>';print_r($data);echo '</pre>';
 
@@ -188,7 +190,7 @@ class PayController extends Controller
                     'plat_oid'=>$xml['transaction_id'],
                     'plat'=>2
                 ];
-                $res = OrderModel::where(['order_name'=>$order_name])->upate($data);
+                OrderModel::where(['order_name'=>$order_name])->upate($data);
 
 
             }else{
