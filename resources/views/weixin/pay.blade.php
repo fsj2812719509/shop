@@ -19,6 +19,22 @@
             height:200, //高度
             text:code1//任意内容
         });
+        var success = function(){
+            $.post(
+                "/success",
+                {order_name:order_name},
+                function(msg){
+                    if(msg==1){
+                        location.href='/win';
+                    }
+                }
+            );
+        }
+        //计时器
+        var s = setInterval(function(){
+            success();
+        },1000*3)
+
     })
 
 </script>
