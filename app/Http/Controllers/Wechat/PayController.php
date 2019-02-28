@@ -20,7 +20,7 @@ class PayController extends Controller
         //
         $total_fee = 1;         //用户要支付的总金额
 
-        setcookie('order_sn',$order_name,time()+3600,'/','',false,true);
+        setcookie('order_name',$order_name,time()+3600,'/','',false,true);
         $order_id = OrderModel::generateOrderSN();
 
         $order_info = [
