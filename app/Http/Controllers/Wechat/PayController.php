@@ -19,8 +19,6 @@ class PayController extends Controller
 
         //
         $total_fee = 1;         //用户要支付的总金额
-
-        setcookie('order_name',$order_name,time()+3600,'/','',false,true);
         //$order_id = OrderModel::generateOrderSN();
 
         $order_info = [
@@ -56,8 +54,9 @@ class PayController extends Controller
 //		echo 'prepay_id: '.$data->prepay_id;echo '<br>';
 //		echo 'trade_type: '.$data->trade_type;echo '<br>';
         $weixin = $data->code_url;
-        $url = base64_encode($weixin);
-        header("Refresh:0;url='/deciphering/$url'");
+        echo $weixin;
+        //$url = base64_encode($weixin);
+        //header("Refresh:0;url='/deciphering/$url'");
 
        // return view('weixin.pay',['code_url'=>$weixin]);
 //        die;
