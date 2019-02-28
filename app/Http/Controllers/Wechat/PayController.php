@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Wechat;
 
-use http\Env\Response;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\OrderModel;
@@ -216,8 +216,8 @@ class PayController extends Controller
     }
 
     /** 支付成功 */
-    public function success(Response $response){
-        $order_name  = $response->input('order_name');
+    public function success(Request $request){
+        $order_name  = $request->input('order_name');
         $arr = OrderModel::where(['order_name'=>$order_name])->first();
         if($arr['is_pay']==2){
              echo 1;
