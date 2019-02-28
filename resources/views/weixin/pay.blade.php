@@ -12,7 +12,7 @@
         $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
         var code1 =$("#code1").val();
         var order_name = $("#order_name").val();
-        console.log(order_name);
+        //console.log(order_name);
         $("#code").qrcode({
             render: "canvas", //table方式
             width: 200, //宽度
@@ -32,7 +32,7 @@
         }
         //计时器
         var s = setInterval(function(){
-            success();
+            console.log(111)
         },1000*3)
 
     })
