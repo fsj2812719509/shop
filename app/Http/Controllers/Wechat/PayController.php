@@ -21,15 +21,15 @@ class PayController extends Controller
         $total_fee = 1;         //用户要支付的总金额
 
         setcookie('order_name',$order_name,time()+3600,'/','',false,true);
-        $order_id = OrderModel::generateOrderSN();
+        //$order_id = OrderModel::generateOrderSN();
 
         $order_info = [
             'appid'         =>  env('WEIXIN_APPID_0'),      //微信支付绑定的服务号的APPID
             'mch_id'        =>  env('WEIXIN_MCH_ID'),       // 商户ID
             'nonce_str'     => str_random(16),             // 随机字符串
             'sign_type'     => 'MD5',
-            'body'          => '测试订单-'.mt_rand(1111,9999) . str_random(6),
-            'out_trade_no'  => $order_id,                       //本地订单号
+            'body'          => '测试订单-',
+            'out_trade_no'  => $order_name,                       //本地订单号
             'total_fee'     => $total_fee,
             'spbill_create_ip'  => $_SERVER['REMOTE_ADDR'],     //客户端IP
             'notify_url'    => $this->weixin_notify_url,        //通知回调地址
@@ -64,6 +64,13 @@ class PayController extends Controller
         //echo '<pre>';print_r($data);echo '</pre>';
 
         //将 code_url 返回给前端，前端生成 支付二维码
+
+    }
+    /** 解密 */
+    public function deciphering($url){
+        $code_url=base64_decode($url);
+        $order_name = $_COOKIE['order_name'];
+        return view('weixin.pay',['code_url'=>$code_url,'order_name'=>$order_name]);
 
     }
 
@@ -207,13 +214,7 @@ class PayController extends Controller
 
     }
 
-    /** 解密 */
-    public function deciphering($url){
-        $code_url=base64_decode($url);
-        $order_name = $_COOKIE['order_name'];
-        return view('weixin.pay',['code_url'=>$code_url,'order_name'=>$order_name]);
 
-    }
 
     /** 支付成功 */
     public function success(Request $request){
