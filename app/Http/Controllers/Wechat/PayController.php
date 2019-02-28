@@ -215,7 +215,7 @@ class PayController extends Controller
     /** 支付成功 */
     public function success(Resquert $resquert){
         $order_name  = $resquert->input('order_name');
-        $arr = OrderModel::wehere(['order_name'=>$order_name])->first();
+        $arr = OrderModel::where(['order_name'=>$order_name])->first();
         if($arr['is_pay']==2){
              echo 1;
         }else{
