@@ -20,6 +20,7 @@
             text:code1//任意内容
         });
         var success = function(){
+            var order_name = $("#order_name").val();
             $.post(
                 "/success",
                 {order_name:order_name},
@@ -32,7 +33,7 @@
         }
         //计时器
         var s = setInterval(function(){
-            console.log(111)
+            success()
         },1000*3)
 
     })

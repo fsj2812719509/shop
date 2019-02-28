@@ -172,7 +172,7 @@ class PayController extends Controller
         $log_str = date('Y-m-d H:i:s') . "\n" . $data . "\n<<<<<<<";
         file_put_contents('logs/wx_pay_notice.log',$log_str,FILE_APPEND);
 
-        $xml = simplexml_load_string($data);
+        $xml = (array)simplexml_load_string($data,'SimpleXMLElement',LIBXML_NOCDATA);
 
         if($xml['result_code']=='SUCCESS' && $xml['return_code']=='SUCCESS'){      //微信支付成功回调
             //验证签名
@@ -183,7 +183,7 @@ class PayController extends Controller
                 $order_name = $xml['out_trade_no'];
                 $data = [
                     'pay_time'=>time(),
-                    'is_pay'=>2,
+                    'is_pay'=>1,
                     'is_delete'=>2,
                     'plat_oid'=>$xml['transaction_id'],
                     'plat'=>2
@@ -210,10 +210,10 @@ class PayController extends Controller
     public function success(Request $request){
         $order_name  = $request->input('order_name');
         $arr = OrderModel::where(['order_name'=>$order_name])->first();
-        if($arr['is_pay']==2){
+        if($arr['is_pay']==1){
              echo 1;
         }else{
-            echo 2;
+            echo 0;
         }
     }
 
