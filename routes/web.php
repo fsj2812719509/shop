@@ -115,6 +115,7 @@ Route::get('/weixin/pay/test/{order_id}','Wechat\PayController@test');     //微
 Route::post('/weixin/pay/notice','Wechat\PayController@notice');     //微信支付通知回调
 Route::get('/deciphering/{url}','Wechat\PayController@deciphering');
 Route::post('/success','Wechat\PayController@success');
+Route::post('/win','Wechat\PayController@win');
 
 
 
