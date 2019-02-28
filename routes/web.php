@@ -117,6 +117,9 @@ Route::get('/deciphering/{url}','Wechat\PayController@deciphering');
 Route::post('/success','Wechat\PayController@success');
 Route::get('/win','Wechat\PayController@win');
 
+//微信登录
+Route::get('/weixinlogin','Wechat\WechatController@weixinlogin');
+
 
 
 

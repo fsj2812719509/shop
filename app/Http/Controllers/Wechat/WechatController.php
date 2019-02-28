@@ -357,6 +357,13 @@ class WechatController extends Controller
 
     }
 
+    /**
+     * 微信登录
+     */
+    public function weixinlogin(){
+        return view('weixin.login');
+    }
+
 
 }
 
