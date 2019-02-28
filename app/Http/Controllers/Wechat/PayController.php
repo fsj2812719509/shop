@@ -41,7 +41,7 @@ class PayController extends Controller
         $rs = $this->postXmlCurl($xml, $this->weixin_unifiedorder_url, $useCert = false, $second = 30);
 
         $data =  simplexml_load_string($rs);
-        var_dump($data);echo '<hr>';
+        //var_dump($data);echo '<hr>';
 //        echo 'return_code: '.$data->return_code;echo '<br>';
 //		echo 'return_msg: '.$data->return_msg;echo '<br>';
 //		echo 'appid: '.$data->appid;echo '<br>';
@@ -52,22 +52,15 @@ class PayController extends Controller
 //		echo 'prepay_id: '.$data->prepay_id;echo '<br>';
 //		echo 'trade_type: '.$data->trade_type;echo '<br>';
         $weixin = $data->code_url;
-        echo $weixin;
+        //echo $weixin;
         //$url = base64_encode($weixin);
         //header("Refresh:0;url='/deciphering/$url'");
-
+        return view('weixin.pay',['code_url'=>$weixin,'order_name'=>$order_name]);
        // return view('weixin.pay',['code_url'=>$weixin]);
 //        die;
         //echo '<pre>';print_r($data);echo '</pre>';
 
         //将 code_url 返回给前端，前端生成 支付二维码
-
-    }
-    /** 解密 */
-    public function deciphering($url){
-        $code_url=base64_decode($url);
-        $order_name = $_COOKIE['order_name'];
-        return view('weixin.pay',['code_url'=>$code_url,'order_name'=>$order_name]);
 
     }
 
