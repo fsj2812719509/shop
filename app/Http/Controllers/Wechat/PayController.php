@@ -208,7 +208,6 @@ class PayController extends Controller
     public function deciphering($url){
         $code_url=base64_decode($url);
         $order_name = $_COOKIE['order_name'];
-        print_r($order_name);exit;
         return view('weixin.pay',['code_url'=>$code_url,'order_name'=>$order_name]);
 
     }
