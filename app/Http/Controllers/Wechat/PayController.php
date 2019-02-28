@@ -16,9 +16,6 @@ class PayController extends Controller
 
     public function test($order_name)
     {
-        echo $order_name;
-
-        echo __METHOD__;die;
         $total_fee = 1;         //用户要支付的总金额
         //$order_id = OrderModel::generateOrderSN();
 
@@ -44,7 +41,7 @@ class PayController extends Controller
         $rs = $this->postXmlCurl($xml, $this->weixin_unifiedorder_url, $useCert = false, $second = 30);
 
         $data =  simplexml_load_string($rs);
-//        //var_dump($data);echo '<hr>';
+        var_dump($data);echo '<hr>';
 //        echo 'return_code: '.$data->return_code;echo '<br>';
 //		echo 'return_msg: '.$data->return_msg;echo '<br>';
 //		echo 'appid: '.$data->appid;echo '<br>';
