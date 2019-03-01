@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2>JSSDK</h2>
-
+        <button id="btn1">phone</button>
     </div>
 @endsection
 @section('footer')
