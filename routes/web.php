@@ -120,6 +120,12 @@ Route::get('/win','Wechat\PayController@win');
 //微信登录
 Route::get('/weixinlogin','Wechat\WechatController@weixinlogin');
 
+//jssdk
+Route::get('/weixin/jssdk/test','Wechat\WechatController@jssdkTest');       // 测试
+
+
+
+
 
 
 
