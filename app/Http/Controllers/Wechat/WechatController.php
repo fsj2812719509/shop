@@ -433,7 +433,7 @@ class WechatController extends Controller
             'appid' => env('WEIXIN_APPID'),        //APPID
             'timestamp' => time(),
             'noncestr'    => str_random(10),
-            'sign'      => $this->wxJsConfigSign()
+            //'sign'      => $this->wxJsConfigSign()
         ];
         print_r($jsconfig['appid']);
         $data = [
