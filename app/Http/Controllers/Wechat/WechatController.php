@@ -435,7 +435,9 @@ class WechatController extends Controller
             'noncestr'    => str_random(10),
             //'sign'      => $this->wxJsConfigSign()
         ];
-        print_r($jsconfig['appid']);
+        $sign = $this->wxJsConfigSign($jsconfig);
+        $jsconfig['sign'] = $sign;
+        //print_r($jsconfig['appid']);
         $data = [
             'jsconfig'  => $jsconfig
         ];
