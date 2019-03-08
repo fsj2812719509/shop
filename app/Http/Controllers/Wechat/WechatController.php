@@ -507,11 +507,9 @@ class WechatController extends Controller
                             "url"=>"http://www.soso.com/"
                         ],
                         [
-                            "type"=>"miniprogram",
-                            "name"=>"wxa",
-                            "url"=>"http://mp.weixin.qq.com",
-                            "appid"=>"wx286b93c14bbf93aa",
-                            "pagepath"=>"pages/lunar/index"
+                            "type"=>"view",
+                            "name"=>"克隆",
+                            "url"=>""
                         ],
                         [
                             "type"=>"click",
@@ -522,7 +520,7 @@ class WechatController extends Controller
                 ],
             ],
         ];
-        
+
         $body = json_encode($data, JSON_UNESCAPED_UNICODE);
         $r = $client->request('POST', $url, [
             'body' => $body
@@ -542,6 +540,11 @@ class WechatController extends Controller
 
         }
 
+    }
+
+    /** 自定义菜单页面 */
+    public function customMenuview(){
+        view('weixin.custom');
     }
 
 
