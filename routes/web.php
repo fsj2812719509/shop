@@ -123,6 +123,10 @@ Route::get('/win','Wechat\PayController@win');
 //jssdk
 Route::get('/weixin/jssdk/test','Wechat\WechatController@jssdkTest');       // 测试
 
+//自定义菜单
+Route::get('/wechat/custommenu','Wechat\WechatController@customMenu');
+Route::post('/wechat/custommenu','Wechat\WechatController@customMenu');
+
 
 
 

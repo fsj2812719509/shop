@@ -19,9 +19,7 @@
             signature: "{{$jsconfig['sign']}}",// 必填，签名
             jsApiList: ['chooseImage','uploadImage','getLocalImgData','startRecord'] // 必填，需要使用的JS接口列表
         });
-        wx.ready(function(){
-
-
+        wx.ready(function(){.l
             $("#btn1").click(function () {
                 wx.chooseImage({
                     count: 9, // 默认9

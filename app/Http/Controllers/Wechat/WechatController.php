@@ -485,6 +485,12 @@ class WechatController extends Controller
     }
 
 
+    /** 自定义菜单 */
+    public function customMenu(){
+        $url='https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . $this->getWXAccessToken();
+        echo $url;
+    }
+
 
 }
 
