@@ -488,7 +488,60 @@ class WechatController extends Controller
     /** 自定义菜单 */
     public function customMenu(){
         $url='https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . $this->getWXAccessToken();
-        echo $url;
+
+        $client = new GuzzleHttp\Client(['base_uri' => $url]);
+
+        $data = [
+            "button"=>[
+                [
+                    "type"=>"click",
+                    "name"=>"今日歌曲",
+                    "key"=>"V1001_TODAY_MUSIC"
+                ],
+                [
+                    "name"=>'菜单',
+                    "sub_button"=>[
+                        [
+                            "type"=>"view",
+                            "name"=>"搜索",
+                            "url"=>"http://www.soso.com/"
+                        ],
+                        [
+                            "type"=>"miniprogram",
+                            "name"=>"wxa",
+                            "url"=>"http://mp.weixin.qq.com",
+                            "appid"=>"wx286b93c14bbf93aa",
+                            "pagepath"=>"pages/lunar/index"
+                        ],
+                        [
+                            "type"=>"click",
+                            "name"=>"赞一下我们",
+                            "key"=>"V1001_GOOD"
+                        ],
+                    ]
+                ],
+            ],
+        ];
+        
+        $body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $r = $client->request('POST', $url, [
+            'body' => $body
+        ]);
+
+        // 3 解析微信接口返回信息
+
+        $response_arr = json_decode($r->getBody(), true);
+        //echo '<pre>';print_r($response_arr);echo '</pre>';
+
+        if ($response_arr['errcode'] == 0) {
+            echo "菜单创建成功";
+        } else {
+            echo "菜单创建失败，请重试";
+            echo '</br>';
+            echo $response_arr['errmsg'];
+
+        }
+
     }
 
 
