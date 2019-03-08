@@ -544,7 +544,7 @@ class WechatController extends Controller
 
     /** 自定义菜单页面 */
     public function customMenuview(){
-        view('weixin.custom');
+        echo view('weixin.custom');
     }
 
 
