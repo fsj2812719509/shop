@@ -509,7 +509,7 @@ class WechatController extends Controller
                         [
                             "type"=>"view",
                             "name"=>"克隆",
-                            "url"=>""
+                            "url"=>"http://fushijia.comcto.com/wechat/custommenuview"
                         ],
                         [
                             "type"=>"click",
