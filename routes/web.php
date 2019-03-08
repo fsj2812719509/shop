@@ -126,6 +126,7 @@ Route::get('/weixin/jssdk/test','Wechat\WechatController@jssdkTest');       // �
 //自定义菜单
 Route::get('/wechat/custommenu','Wechat\WechatController@customMenu');
 Route::post('/wechat/custommenu','Wechat\WechatController@customMenu');
+
 Route::get('/wechat/custommenuview','Wechat\WechatController@customMenuview');
 
 

@@ -1,1 +1,1 @@
-12345yuiogbfvdczaxscdfvgbn
+echo 123;
